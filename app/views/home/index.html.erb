@@ -1,0 +1,8 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<%  @urls = current_user.shortened_urls.each do |data| %>
+	<li><%= data.unique_key %></li>
+	<%= link_to data.unique_key, "#{config.default_host}/#{data.unique_key}" %>
+
+<%end%>
+<%= link_to 'New Url Short', new_url_short_path %>

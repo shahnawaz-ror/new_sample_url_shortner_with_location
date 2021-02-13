@@ -1,0 +1,22 @@
+<%= form_with(model: url_short, local: true) do |form| %>
+  <% if url_short.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(url_short.errors.count, "error") %> prohibited this url_short from being saved:</h2>
+
+      <ul>
+      <% url_short.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_area :link %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

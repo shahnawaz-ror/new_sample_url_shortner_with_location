@@ -1,0 +1,7 @@
+<div>
+	<% @stats_all.each do |data| %>
+		<li><%= data.url %></li>
+		<li><%= link_to "#{ENV["DEFAULT_URL_DEV"]}/#{data.unique_key}", "#{config.default_host}/#{data.unique_key}" %></li>
+		<li><%= data.use_count %></li>
+	<% end %>
+</div>

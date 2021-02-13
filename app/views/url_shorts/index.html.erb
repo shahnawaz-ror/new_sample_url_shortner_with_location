@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Url Shorts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @url_shorts.each do |url_short| %>
+      <tr>
+        <td><%= url_short.link %></td>
+        <td><%= link_to 'Show', url_short %></td>
+        <td><%= link_to 'Edit', edit_url_short_path(url_short) %></td>
+        <td><%= link_to 'Destroy', url_short, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Url Short', new_url_short_path %>
