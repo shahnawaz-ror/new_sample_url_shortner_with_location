@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:show, :stats]
 	#Get all currebt user shorten urls
 	def index
 		@urls = current_user.shortened_urls

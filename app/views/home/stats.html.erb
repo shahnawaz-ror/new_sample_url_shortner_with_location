@@ -21,9 +21,11 @@
         	<% @stats_all.each do |data| %>
 	      <tr>
             <td><%= data.url %></td>
-            <td><%= link_to "#{ENV["DEFAULT_URL_DEV"]}/#{data.unique_key}", "#{config.default_host}/#{data.unique_key}" %></td>
+            <td><%= link_to "#{ENV["DEFAULT_URL_PROD"]}/#{data.unique_key}", "#{config.default_host}/#{data.unique_key}" %></td>
             <td><%= data.use_count %></td>
-            <td>India</td>
+            <td><% get_all_top_country(data) %>
+            	<%= @data %>
+            </td>
           </tr>
           <% end %>
         </tbody>
