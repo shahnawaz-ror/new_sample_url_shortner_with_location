@@ -1,7 +1,37 @@
-<div>
-	<% @stats_all.each do |data| %>
-		<li><%= data.url %></li>
-		<li><%= link_to "#{ENV["DEFAULT_URL_DEV"]}/#{data.unique_key}", "#{config.default_host}/#{data.unique_key}" %></li>
-		<li><%= data.use_count %></li>
-	<% end %>
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-10 col-lg-10 col-md-10">
+
+      <p id="notice"><%= notice %></p>
+
+      <h1>All Links by current user</h1>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>URL</th>
+            <th>Short Link</th>
+            <th>Total clicks</th>
+            <th>Top countries</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        	<% @stats_all.each do |data| %>
+	      <tr>
+            <td><%= data.url %></td>
+            <td><%= link_to "#{ENV["DEFAULT_URL_DEV"]}/#{data.unique_key}", "#{config.default_host}/#{data.unique_key}" %></td>
+            <td><%= data.use_count %></td>
+            <td>India</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+	<%= link_to 'New Url Short', new_url_short_path %>
+    </div>
+  </div>
 </div>
+
