@@ -12,7 +12,7 @@ class Shortener::ShortenedUrlsController < ActionController::Metal
     url   = ::Shortener::ShortenedUrl.fetch_with_token(token: token, additional_params: params, track: track)
     country = ISO3166::Country[request.location.country]
    	name = (country.translations[I18n.locale.to_s] || country.name) rescue ''
-  	Country.create(url_id: url[:shortened_url].id, name: country, ip: request.location.ip)
+  	Country.create(url_id: url[:shortened_url]&.id, name: country, ip: request.location.ip)
     redirect_to url[:url], status: :moved_permanently
   end
 end

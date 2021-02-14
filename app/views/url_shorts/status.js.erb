@@ -1,0 +1,7 @@
+<% if @data.present? %>
+	$('#message-response,#message-value').show();
+	$('#message-value').empty();
+	$('#message-value').append("<%= escape_javascript(render 'data_link') %>")
+<%else%>
+	alert('Something went wrong please try again')
+<% end %>

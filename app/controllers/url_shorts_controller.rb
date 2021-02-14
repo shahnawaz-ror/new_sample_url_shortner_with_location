@@ -7,8 +7,19 @@ class UrlShortsController < ApplicationController
 
   # POST /url_shorts or /url_shorts.json
   def create
-    Shortener::ShortenedUrl.generate(params[:url_short][:link], owner: current_user, expires_at: 24.hours.since)
-    redirect_to new_url_short_path
+    begin
+      @data = Shortener::ShortenedUrl.generate(params[:url_short][:link], owner: current_user, expires_at: 24.hours.since)
+      respond_to do |format|  
+        format.js { render 'url_shorts/status'}
+      end
+    rescue Exception => e
+      @error = true
+      @error_data = e
+      respond_to do |format|  
+        format.js { render 'url_shorts/status'}
+      end
+    end
+    # redirect_to new_url_short_path
   end
 
   private

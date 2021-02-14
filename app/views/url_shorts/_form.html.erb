@@ -1,22 +1,16 @@
-<%= form_with(model: url_short, local: true) do |form| %>
-  <% if url_short.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(url_short.errors.count, "error") %> prohibited this url_short from being saved:</h2>
-
-      <ul>
-      <% url_short.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%#= form_with(model: url_short, local: true) do |form| %>
+<%= form_for(@url_short,:html=>{:id=>"your_form_id",:multipart => true,:remote=>true}) do |form |%>
   <div class="field">
     <%= form.label :link %>
     <%= form.text_area :link %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "shorten" %>
   </div>
+  <div id="message-response">Here is your short URL</div>
+  <div id="message-value"></div>
 <% end %>
+<script type="text/javascript">
+  $('#message-response,#message-value').hide();
+</script>

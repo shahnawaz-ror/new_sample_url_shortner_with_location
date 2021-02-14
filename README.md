@@ -1,24 +1,41 @@
-# README
+# Sample application with Short URL generate and track the location
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple todo app to show how to use with [Url-Shortner](https://url-short-ror.herokuapp.com/).
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Follow these easy steps to install and start the app:
 
-* System dependencies
+### Set up Rails app
 
-* Configuration
+First, install the gems required by the application:
 
-* Database creation
+    
+    ruby 2.7.2
+    bundle
 
-* Database initialization
+Next, execute the database migrations/schema setup:
 
-* How to run the test suite
+	bundle exec rake db:setup #Configure the Database.yml
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Initialize ENV
 
-* ...
+    DEFAULT_URL_PROD=localhost:3000 #Please use ngrok link so You can check the locations of users also
+
+
+### Start the app
+
+Start the Rails app to see the In-Context-Editor added to the To-Do application. You're ready to localize your app:
+
+    rails server
+
+You can find your app now by pointing your browser to [http://localhost:3000](http://localhost:3000). If everything worked you can log into In-Context Editor with your Phrase user account or the demo login credentials:
+
+	User: testuser@gmail.com
+	Password: 12345678
+
+## So, what next?
+
+The free URL shortner here you can shortner your url for 30 days, and track the locations with ips where the link is access.
+
