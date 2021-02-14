@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UrLsControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class UrLsControllerTest < ActionDispatch::IntegrationTest
     @url = urls(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get urls_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_url_url
     assert_response :success
   end
 
-  test "should create url" do
+  test 'should create url' do
     assert_difference('Url.count') do
       post urls_url, params: { url: { encoded_url: @url.encoded_url, url: @url.url, user_id: @url.user_id } }
     end
@@ -23,22 +25,22 @@ class UrLsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to url_url(Url.last)
   end
 
-  test "should show url" do
+  test 'should show url' do
     get url_url(@url)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_url_url(@url)
     assert_response :success
   end
 
-  test "should update url" do
+  test 'should update url' do
     patch url_url(@url), params: { url: { encoded_url: @url.encoded_url, url: @url.url, user_id: @url.user_id } }
     assert_redirected_to url_url(@url)
   end
 
-  test "should destroy url" do
+  test 'should destroy url' do
     assert_difference('Url.count', -1) do
       delete url_url(@url)
     end
