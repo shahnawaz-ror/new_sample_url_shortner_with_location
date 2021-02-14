@@ -1,5 +1,4 @@
 class UrlShortsController < ApplicationController
-  before_action :authenticate_user!
   # GET /url_shorts/new
   def new
     @url_short = UrlShort.new
@@ -8,7 +7,11 @@ class UrlShortsController < ApplicationController
   # POST /url_shorts or /url_shorts.json
   def create
     begin
-      @data = Shortener::ShortenedUrl.generate(params[:url_short][:link], owner: current_user, expires_at: 24.hours.since)
+      if current_user.present?
+        @data = Shortener::ShortenedUrl.generate(params[:url_short][:link], owner: current_user, expires_at: 24.hours.since)
+      else
+        @data = Shortener::ShortenedUrl.generate(params[:url_short][:link], expires_at: 24.hours.since)
+      end
       respond_to do |format|  
         format.js { render 'url_shorts/status'}
       end
