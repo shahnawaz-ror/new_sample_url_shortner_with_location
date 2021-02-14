@@ -15,7 +15,7 @@ module ApplicationHelper
       total[e] += 1
     end
     result = data_result.sort_by { |_key, value| value }.reverse
-    result[0..3].each do |obj|
+    result[0..2].each do |obj|
       @data << obj[0]
     end
     @data = begin
